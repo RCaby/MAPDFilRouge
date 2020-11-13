@@ -1,7 +1,7 @@
 package tests;
 
-import petriNet.PetriNet;
+import junit.framework.TestCase;
 
-public class TransitionTest {
+public class TransitionTest extends TestCase {
     
 }
