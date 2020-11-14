@@ -12,7 +12,7 @@ import nodes.Transition;
  */
 public abstract class ArcPtoT extends Arc {
 
-	public ArcPtoT(Place p, Transition t) {
+	protected ArcPtoT(Place p, Transition t) {
 		super(p, t);
 	}
 
@@ -30,8 +30,8 @@ public abstract class ArcPtoT extends Arc {
 	 * Méthode surchargée permettant de retirer cet arc de la place et de la
 	 * transition associées.
 	 * 
-	 * ((Test unitaire : vérifier les longueurs des listes
-	 * + non-présence de l'élément))
+	 * ((Test unitaire : vérifier les longueurs des listes + non-présence de
+	 * l'élément))
 	 */
 	@Override
 	public void withdraw() {
