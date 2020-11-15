@@ -1,7 +1,7 @@
 # MAPDFilRouge
 
   
-Pour lancer le programme de test : lancer la classe Test.java
+Pour lancer le programme de test : lancer la classe Test.java.
 Pour lancer les test unitaires, des classes de tests contenant un test par méthode sont disponibles dans le dossier tests.
 
 Il y a quelques différences entre la conception et notre implémentation :
