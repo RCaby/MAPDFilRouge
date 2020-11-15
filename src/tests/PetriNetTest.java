@@ -140,6 +140,7 @@ public class PetriNetTest {
      */
     public void removeArcTest() {
         PetriNet net = new PetriNet();
+
         net.addPlace(0);
         net.addPlace(1);
         net.addPlace(2);
