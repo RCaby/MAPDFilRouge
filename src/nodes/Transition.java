@@ -1,6 +1,7 @@
 package nodes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import arcs.Arc;
 import arcs.ArcPtoT;
@@ -19,14 +20,12 @@ public class Transition {
 	private ArrayList<ArcTtoP> outLinks;
 
 	public Transition() {
-		inLinks = new ArrayList<ArcPtoT>();
-		outLinks = new ArrayList<ArcTtoP>();
+		inLinks = new ArrayList<>();
+		outLinks = new ArrayList<>();
 	}
 
 	/**
 	 * Méthode déterminant si la transition est tirable.
-	 * 
-	 * ((Test unitaire : tester avec un false puis aucun false, avec plusieurs true))
 	 * 
 	 * @return result - La transition est-elle tirable ?
 	 */
@@ -39,10 +38,8 @@ public class Transition {
 	}
 
 	/**
-	 * Méthode gérant le tirage en "déplaçant" les jetons.
-	 * 
-	 * ((Test unitaire : vérifier que les places en amont ont moins de jetons
-	 * et les places en aval plus de jetons))
+	 * Méthode gérant le tirage en "déplaçant" les jetons, en supposant la
+	 * transition tirable.
 	 */
 	public void step() {
 		for (Arc arc : inLinks) {
@@ -53,11 +50,11 @@ public class Transition {
 		}
 	}
 
-	public ArrayList<ArcPtoT> getInLinks() {
+	public List<ArcPtoT> getInLinks() {
 		return inLinks;
 	}
 
-	public ArrayList<ArcTtoP> getOutLinks() {
+	public List<ArcTtoP> getOutLinks() {
 		return outLinks;
 	}
 

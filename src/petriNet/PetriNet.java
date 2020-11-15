@@ -1,6 +1,7 @@
 package petriNet;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Iterator;
 
 import arcs.Arc;
@@ -9,6 +10,7 @@ import arcs.ArcTtoP;
 import arcs.CleanerArc;
 import arcs.RegularArc;
 import arcs.ZeroArc;
+
 import nodes.Place;
 import nodes.Transition;
 
@@ -24,9 +26,9 @@ public class PetriNet {
 	private ArrayList<Place> placesList;
 
 	public PetriNet() {
-		transitionsList = new ArrayList<Transition>();
-		arcsList = new ArrayList<Arc>();
-		placesList = new ArrayList<Place>();
+		transitionsList = new ArrayList<>();
+		arcsList = new ArrayList<>();
+		placesList = new ArrayList<>();
 	}
 
 	/**
@@ -34,7 +36,7 @@ public class PetriNet {
 	 * 
 	 * @return la liste des transitions du réseau
 	 */
-	public ArrayList<Transition> getTransitionsList() {
+	public List<Transition> getTransitionsList() {
 		return transitionsList;
 	}
 
@@ -43,7 +45,7 @@ public class PetriNet {
 	 * 
 	 * @return la liste des arcs du réseau
 	 */
-	public ArrayList<Arc> getArcsList() {
+	public List<Arc> getArcsList() {
 		return arcsList;
 	}
 
@@ -52,15 +54,13 @@ public class PetriNet {
 	 * 
 	 * @return la liste des places du réseau
 	 */
-	public ArrayList<Place> getPlacesList() {
+	public List<Place> getPlacesList() {
 		return placesList;
 	}
 
 	/**
 	 * Fonction ajoutant une place au PetriNet. Elle n'a aucun jeton et n'est reliée
 	 * à rien.
-	 * 
-	 * ((Test unitaire possible : tester la longueur de placesList avant et après))
 	 */
 	public void addPlace(int nb) {
 		Place newPlace = new Place(nb);
@@ -71,17 +71,17 @@ public class PetriNet {
 	 * Retire une place du réseau. La méthode se charge d'éliminer tous les arcs qui
 	 * lui sont reliés, avant de l'enlever de la liste des places du PetriNet.
 	 * 
-	 * ((Test unitaire : vérifier que arcsList a été diminué de place.getLinks()
-	 * + longueur de arcsList et non-présence de l'élement concerné
-	 * + avec une transition que l'on sait reliée à la place, vérifier que l'arc n'est plus dans ses listes))
-	 * 
-	 * @param place - La place a retirer.
+	 * @param place - La place à retirer.
 	 */
 	public void removePlace(Place place) {
 		// Retrait des arcs sortant de la place.
+		ArrayList<Arc> toBeRemoved = new ArrayList<>();
 		Iterator<Arc> itr = place.getLinks().iterator();
 		while (itr.hasNext()) {
 			Arc arc = itr.next();
+			toBeRemoved.add(arc);
+		}
+		for (Arc arc : toBeRemoved) {
 			removeArc(arc);
 		}
 		placesList.remove(place);
@@ -91,20 +91,19 @@ public class PetriNet {
 	 * Méthode ajoutant un arc Transition vers Place au PetriNet, en initialisant sa
 	 * valeur à value.
 	 * 
-	 * ((Test unitaire : longueur de arcsList avant et après
-	 * + avec la transition concernée, longueur de outLinks.
-	 * + avec la place concernée, longueur de links
-	 * Levée d'exception : que le int passé en paramètre est bien >0))
-	 * 
 	 * @param place      - La place d'arrivée.
 	 * @param transition - La transition de départ.
 	 * @param value      - La valeur de l'arc.
 	 */
 	public void addArcTtoP(Place place, Transition transition, int value) {
-		ArcTtoP newArcTtoP = new ArcTtoP(place, transition, value);
-		arcsList.add(newArcTtoP);
-		transition.getOutLinks().add(newArcTtoP);
-		place.getLinks().add(newArcTtoP);
+		if (value < 0) {
+			throw new IllegalArgumentException("Un arc ne peut pas avoir de valeur négative !");
+		} else {
+			ArcTtoP newArcTtoP = new ArcTtoP(place, transition, value);
+			arcsList.add(newArcTtoP);
+			transition.getOutLinks().add(newArcTtoP);
+			place.getLinks().add(newArcTtoP);
+		}
 
 	}
 
@@ -112,23 +111,23 @@ public class PetriNet {
 	 * Méthode ajoutant un arc allant d'une place à une transition, en initialisant
 	 * sa valeur à value. C'est un arc "normal" : ni videur ni zéro.
 	 * 
-	 * ((Test unitaire et levée d'exception semblables à ceux de addArcTtoP))
-	 * 
 	 * @param place      - La place de départ.
 	 * @param transition - La transition d'arrivée.
 	 * @param value      - La valeur de l'arc.
 	 */
 	public void addRegularArc(Place place, Transition transition, int value) {
-		RegularArc newRegularArc = new RegularArc(place, transition, value);
-		arcsList.add(newRegularArc);
-		transition.getInLinks().add(newRegularArc);
-		place.getLinks().add(newRegularArc);
+		if (value < 0) {
+			throw new IllegalArgumentException("Un arc ne peut pas avoir de valeur négative !");
+		} else {
+			RegularArc newRegularArc = new RegularArc(place, transition, value);
+			arcsList.add(newRegularArc);
+			transition.getInLinks().add(newRegularArc);
+			place.getLinks().add(newRegularArc);
+		}
 	}
 
 	/**
 	 * Méthode ajoutant un arc zéro allant d'une place à une transition.
-	 * 
-	 * ((Test unitaire : longueur de PetriNet.arcsList, Transition.inLinks, Place.links))
 	 * 
 	 * @param place      - La place de départ.
 	 * @param transition - La transition d'arrivée.
@@ -142,8 +141,6 @@ public class PetriNet {
 
 	/**
 	 * Méthode ajoutant un arc videur allant d'une place à une transition.
-	 * 
-	 * ((Idem que addZeroArc))
 	 * 
 	 * @param place      - La place de départ.
 	 * @param transition - La transition d'arrivée.
@@ -159,9 +156,6 @@ public class PetriNet {
 	 * Méthode retirant un arc du PetriNet. La méthode élimine toute référence à cet
 	 * arc dans ses voisins (place et transition) avant de le supprimer.
 	 * 
-	 * ((Test unitaire : longueur de arcsList et inLinks+outLinks
-	 * + non-présence de l'élément dans ces listes))
-	 * 
 	 * @param arc - L'arc à retirer.
 	 */
 	public void removeArc(Arc arc) {
@@ -171,8 +165,6 @@ public class PetriNet {
 
 	/**
 	 * Méthode ajoutant une transition au PetriNet. Elle n'est reliée à rien.
-	 * 
-	 * ((Test unitaire : longueur de transitionsList))
 	 */
 	public void addTransition() {
 		Transition newTransition = new Transition();
@@ -183,26 +175,31 @@ public class PetriNet {
 	 * Méthode retirant une transition du réseau. La méthode se charge d'éliminer
 	 * tous les arcs qui lui sont reliés avant de retirer la transition.
 	 * 
-	 * ((Test unitaire : longueur de transitionsList
-	 * + non-présence de l'élément concerné
-	 * + avec une place reliée suppression de l'arc pour entrant et sortant))
-	 * 
 	 * @param transition - La transition à retirer.
 	 */
 	public void removeTransition(Transition transition) {
 		// Retrait des arcs entrants dans la transition
-		Iterator<ArcPtoT> itr = transition.getInLinks().iterator();
-		while (itr.hasNext()) {
-			ArcPtoT arc = itr.next();
+		ArrayList<ArcPtoT> toBeRemovedIn = new ArrayList<>();
+		Iterator<ArcPtoT> itrIn = transition.getInLinks().iterator();
+		while (itrIn.hasNext()) {
+			ArcPtoT arc = itrIn.next();
+			toBeRemovedIn.add(arc);
+		}
+		for (ArcPtoT arc : toBeRemovedIn) {
 			removeArc(arc);
 		}
 
 		// Retrait des arcs sortants dans la transition
-		Iterator<ArcTtoP> itr2 = transition.getOutLinks().iterator();
-		while (itr2.hasNext()) {
-			ArcTtoP arc = itr2.next();
+		ArrayList<ArcTtoP> toBeRemovedOut = new ArrayList<>();
+		Iterator<ArcTtoP> itrOut = transition.getOutLinks().iterator();
+		while (itrOut.hasNext()) {
+			ArcTtoP arc = itrOut.next();
+			toBeRemovedOut.add(arc);
+		}
+		for (ArcTtoP arc : toBeRemovedOut) {
 			removeArc(arc);
 		}
+
 		// Retrait de la transition
 		transitionsList.remove(transition);
 	}
@@ -210,9 +207,6 @@ public class PetriNet {
 	/**
 	 * Méthode permettant de choisir une transition dans le PetriNet, et de lance
 	 * son tirage si possible.
-	 * 
-	 * ((Test unitaire : lancer pour une transition tirable et une non-tirable
-	 * et vérifier le déplacement des jetons que dans le premier cas))
 	 * 
 	 * @param transition - La transition à tirer.
 	 */

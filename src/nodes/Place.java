@@ -1,6 +1,7 @@
 package nodes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import arcs.Arc;
 
@@ -16,8 +17,14 @@ public class Place {
 	private ArrayList<Arc> links;
 
 	public Place(int number) {
+		this();
 		tokensNumber = number;
-		this.links = new ArrayList<Arc>();
+
+	}
+
+	public Place() {
+		this.links = new ArrayList<>();
+		tokensNumber = 0;
 	}
 
 	public int getTokensNumber() {
@@ -28,7 +35,7 @@ public class Place {
 		this.tokensNumber = i;
 	}
 
-	public ArrayList<Arc> getLinks() {
+	public List<Arc> getLinks() {
 		return links;
 	}
 

@@ -32,7 +32,6 @@ public class RegularArc extends ArcPtoT {
 	@Override
 	public void moveTokens() {
 		linkedPlace.setTokensNumber(linkedPlace.getTokensNumber() - value);
-		;
 	}
 
 }

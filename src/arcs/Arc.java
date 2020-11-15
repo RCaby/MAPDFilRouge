@@ -14,7 +14,7 @@ public abstract class Arc {
 	protected Place linkedPlace;
 	protected Transition linkedTransition;
 
-	public Arc(Place p, Transition t) {
+	protected Arc(Place p, Transition t) {
 		this.linkedPlace = p;
 		this.linkedTransition = t;
 	}
