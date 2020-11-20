@@ -17,7 +17,15 @@ public class RegularArc extends ArcPtoT {
 		super(p, t);
 		value = i;
 	}
-
+	
+	public int getValue() {
+		return value;
+	}
+	
+	public void setValue(int i) {
+		value = i;
+	}
+	
 	/**
 	 * Méthode déterminant si l'arc autorise le tirage de la transition associée.
 	 */

@@ -27,6 +27,14 @@ public class ArcTtoP extends Arc {
 		super(p, t);
 		value = i;
 	}
+	
+	public int getValue() {
+		return value;
+	}
+	
+	public void setValue(int i) {
+		value = i;
+	}
 
 	/**
 	 * Ajoute le bon nombre de jetons à la place d'arrivée de l'arc.
