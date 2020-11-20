@@ -20,7 +20,7 @@ import java.util.Iterator;
  * @author r19caby, t19borde
  *
  */
-public class PetriNet {
+public class PetriNet implements IPetriNet {
 	private ArrayList<Transition> transitionsList;
 	private ArrayList<Arc> arcsList;
 	private ArrayList<Place> placesList;

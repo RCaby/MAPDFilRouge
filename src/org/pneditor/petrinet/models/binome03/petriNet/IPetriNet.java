@@ -5,7 +5,7 @@ import org.pneditor.petrinet.models.binome03.arcs.Arc;
 import org.pneditor.petrinet.models.binome03.nodes.Place;
 import org.pneditor.petrinet.models.binome03.nodes.Transition;
 
-public interface PetriNetInterface {
+public interface IPetriNet {
 
 	/**
 	 * Fonction ajoutant une place au PetriNet. Elle n'a aucun jeton et n'est reliée
