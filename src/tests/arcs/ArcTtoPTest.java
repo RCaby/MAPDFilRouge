@@ -2,8 +2,7 @@ package tests.arcs;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import petriNet.PetriNet;
+import org.pneditor.petrinet.models.binome03.petriNet.PetriNet;
 
 public class ArcTtoPTest {
 

@@ -2,12 +2,11 @@ package tests;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import arcs.ArcTtoP;
-import arcs.CleanerArc;
-import arcs.RegularArc;
-import arcs.ZeroArc;
-import petriNet.PetriNet;
+import org.pneditor.petrinet.models.binome03.arcs.ArcTtoP;
+import org.pneditor.petrinet.models.binome03.arcs.CleanerArc;
+import org.pneditor.petrinet.models.binome03.arcs.RegularArc;
+import org.pneditor.petrinet.models.binome03.arcs.ZeroArc;
+import org.pneditor.petrinet.models.binome03.petriNet.PetriNet;
 
 public class PetriNetTest {
 

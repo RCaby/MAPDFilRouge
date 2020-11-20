@@ -1,6 +1,6 @@
 package tests;
 
-import petriNet.PetriNet;
+import org.pneditor.petrinet.models.binome03.petriNet.PetriNet;
 
 public class Test {
 
