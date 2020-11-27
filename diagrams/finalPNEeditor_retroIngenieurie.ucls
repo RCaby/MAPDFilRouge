@@ -198,7 +198,7 @@
   </class>  
   <class id="21" language="java" name="org.pneditor.petrinet.AbstractArc" project="MAPDFilRouge" 
     file="/MAPDFilRouge/src/org/pneditor/petrinet/AbstractArc.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="813" y="94"/>    
+    <position height="-1" width="-1" x="888" y="118"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="false" package="false" protected="false" private="false" static="false"/>      
@@ -215,142 +215,154 @@
       <operations public="false" package="false" protected="false" private="false" static="false"/>    
     </display>  
   </class>  
-  <generalization id="23">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="20"/>  
-  </generalization>  
-  <generalization id="24">    
-    <end type="SOURCE" refId="19"/>    
-    <end type="TARGET" refId="18"/>  
-  </generalization>  
-  <generalization id="25">    
-    <end type="SOURCE" refId="20"/>    
-    <end type="TARGET" refId="18"/>  
-  </generalization>  
-  <generalization id="26">    
-    <end type="SOURCE" refId="22"/>    
-    <end type="TARGET" refId="21"/>  
-  </generalization>  
-  <association id="27">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="28" name="links">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="29" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="30">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="31" name="arc"/>      
-      <multiplicity id="32" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="33">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="34" name="transitionAdapter"/>      
-      <multiplicity id="35" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="5" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="36">    
+  <association id="23">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="37" name="placesList">        
+      <attribute id="24" name="placesList">        
         <position height="0" width="0" x="645" y="-17"/>      
       </attribute>      
-      <multiplicity id="38" minimum="0" maximum="2147483647">        
+      <multiplicity id="25" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="645" y="-17"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="39">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="22"/>  
-  </generalization>  
-  <association id="40">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="41" name="arcsList">        
+  <association id="26">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="27" name="transitionAdapter">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="42" minimum="0" maximum="2147483647">        
+      <multiplicity id="28" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="29">    
+    <end type="SOURCE" refId="14" navigable="false">      
+      <attribute id="30" name="links">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="31" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="10" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="43">    
+  <generalization id="32">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="19"/>  
+  </generalization>  
+  <generalization id="33">    
+    <end type="SOURCE" refId="20"/>    
+    <end type="TARGET" refId="18"/>  
+  </generalization>  
+  <generalization id="34">    
+    <end type="SOURCE" refId="11"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="35">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="21"/>  
+  </generalization>  
+  <generalization id="36">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <generalization id="37">    
+    <end type="SOURCE" refId="8"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="38">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <association id="39">    
+    <end type="SOURCE" refId="1" navigable="false">      
+      <attribute id="40" name="petri">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="41" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="42">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <generalization id="43">    
+    <end type="SOURCE" refId="19"/>    
+    <end type="TARGET" refId="18"/>  
+  </generalization>  
+  <generalization id="44">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="10"/>  
+  </generalization>  
+  <generalization id="45">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <association id="46">    
     <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="44" name="transitionsList">        
+      <attribute id="47" name="arcsList">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="48" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="49">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="50" name="placeAdapter">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="51" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="52">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="53" name="inLinks">        
+        <position height="0" width="0" x="-411" y="85"/>      
+      </attribute>      
+      <multiplicity id="54" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-411" y="85"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="55">    
+    <end type="SOURCE" refId="17" navigable="false">      
+      <attribute id="56" name="transitionsList">        
         <position height="0" width="0" x="-674" y="-27"/>      
       </attribute>      
-      <multiplicity id="45" minimum="0" maximum="2147483647">        
+      <multiplicity id="57" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="-674" y="-27"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="46">    
+  <generalization id="58">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="20"/>  
+  </generalization>  
+  <realization id="59">    
     <end type="SOURCE" refId="17"/>    
     <end type="TARGET" refId="16"/>  
   </realization>  
-  <association id="47">    
-    <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="48" name="placeAdapter"/>      
-      <multiplicity id="49" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="50">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="22"/>  
-  </generalization>  
-  <generalization id="51">    
-    <end type="SOURCE" refId="12"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="52">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="53">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <generalization id="54">    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="22"/>  
-  </generalization>  
-  <generalization id="55">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="10"/>  
-  </generalization>  
-  <generalization id="56">    
-    <end type="SOURCE" refId="9"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <association id="57">    
-    <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="58" name="place">        
-        <position height="0" width="0" x="645" y="-17"/>      
-      </attribute>      
-      <multiplicity id="59" minimum="0" maximum="1">        
-        <position height="0" width="0" x="645" y="-17"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="14" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
   <association id="60">    
     <end type="SOURCE" refId="5" navigable="false">      
       <attribute id="61" name="transition">        
@@ -364,71 +376,71 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="63">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="64" name="inLinks">        
-        <position height="0" width="0" x="-411" y="85"/>      
-      </attribute>      
-      <multiplicity id="65" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-411" y="85"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="66">    
-    <end type="SOURCE" refId="15" navigable="false">      
-      <attribute id="67" name="outLinks">        
-        <position height="0" width="0" x="-230" y="-129"/>      
-      </attribute>      
-      <multiplicity id="68" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="-230" y="-129"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="13" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="69">    
-    <end type="SOURCE" refId="6"/>    
-    <end type="TARGET" refId="22"/>  
-  </generalization>  
-  <association id="70">    
     <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="71" name="linkedTransition">        
-        <position height="0" width="0" x="-674" y="-27"/>      
-      </attribute>      
-      <multiplicity id="72" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-674" y="-27"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="15" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <generalization id="73">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="19"/>  
-  </generalization>  
-  <association id="74">    
-    <end type="SOURCE" refId="10" navigable="false">      
-      <attribute id="75" name="linkedPlace">        
+      <attribute id="64" name="linkedPlace">        
         <position height="0" width="0" x="645" y="-17"/>      
       </attribute>      
-      <multiplicity id="76" minimum="0" maximum="1">        
+      <multiplicity id="65" minimum="0" maximum="1">        
         <position height="0" width="0" x="645" y="-17"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="77">    
-    <end type="SOURCE" refId="1" navigable="false">      
-      <attribute id="78" name="petri">        
+  <association id="66">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="67" name="arc">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="79" minimum="0" maximum="1">        
+      <multiplicity id="68" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="10" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="69">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="8"/>  
+  </generalization>  
+  <association id="70">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="71" name="outLinks">        
+        <position height="0" width="0" x="-230" y="-129"/>      
+      </attribute>      
+      <multiplicity id="72" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="-230" y="-129"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="73">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="74" name="linkedTransition">        
+        <position height="0" width="0" x="-674" y="-27"/>      
+      </attribute>      
+      <multiplicity id="75" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-674" y="-27"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="76">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="22"/>  
+  </generalization>  
+  <association id="77">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="78" name="place">        
+        <position height="0" width="0" x="645" y="-17"/>      
+      </attribute>      
+      <multiplicity id="79" minimum="0" maximum="1">        
+        <position height="0" width="0" x="645" y="-17"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="14" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
