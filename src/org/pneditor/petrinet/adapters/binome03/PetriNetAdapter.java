@@ -7,6 +7,7 @@ import org.pneditor.petrinet.AbstractTransition;
 import org.pneditor.petrinet.PetriNetInterface;
 import org.pneditor.petrinet.ResetArcMultiplicityException;
 import org.pneditor.petrinet.UnimplementedCaseException;
+import org.pneditor.petrinet.models.binome03.arcs.Arc;
 import org.pneditor.petrinet.models.binome03.arcs.ArcTtoP;
 import org.pneditor.petrinet.models.binome03.arcs.CleanerArc;
 import org.pneditor.petrinet.models.binome03.arcs.RegularArc;
@@ -15,6 +16,9 @@ import org.pneditor.petrinet.models.binome03.nodes.Place;
 import org.pneditor.petrinet.models.binome03.nodes.Transition;
 import org.pneditor.petrinet.models.binome03.petriNet.PetriNet;
 
+/**
+ * Classe qui sert à adapter notre programmation du réseau de réseau au PNE Editor
+ */
 public class PetriNetAdapter extends PetriNetInterface {
 
 	private PetriNet petri;
@@ -22,7 +26,11 @@ public class PetriNetAdapter extends PetriNetInterface {
 	public PetriNetAdapter() {
 		petri = new PetriNet();
 	}
-
+	
+	/**
+	 * Permet d'ajouter une place dans notre réseau de Pétri.
+	 * Renvoie son adapteur.
+	 */
 	@Override
 	public AbstractPlace addPlace() {
 		petri.addPlace(0);
@@ -30,7 +38,11 @@ public class PetriNetAdapter extends PetriNetInterface {
 		PlaceAdapter pAdapter = new PlaceAdapter(" ", place);
 		return pAdapter;
 	}
-
+	
+	/**
+	 * Permet d'ajouter une transition dans notre réseau de Pétri.
+	 * Renvoie son adapteur.
+	 */
 	@Override
 	public AbstractTransition addTransition() {
 		petri.addTransition();
@@ -39,7 +51,12 @@ public class PetriNetAdapter extends PetriNetInterface {
 		return tAdapter;
 
 	}
-
+	
+	/**
+	 * Permet d'ajouter un arc normal (dont on peut changer la multiplicité) dans notre réseau de Pétri.
+	 * Renvoie son adapteur.
+	 * Ici, il est nécessaire pour nous de déterminer si la source est la place ou la transition, car cela change la classe d'arc utilisée.
+	 */
 	@Override
 	public AbstractArc addRegularArc(AbstractNode source, AbstractNode destination) throws UnimplementedCaseException {
 		if (source.isPlace()) {
@@ -63,7 +80,11 @@ public class PetriNetAdapter extends PetriNetInterface {
 		}
 		
 	}
-
+	
+	/**
+	 * Permet d'ajouter un arc zéro (ou arc inhibiteur) dans notre réseau de Pétri.
+	 * Renvoie son adapteur.
+	 */
 	@Override
 	public AbstractArc addInhibitoryArc(AbstractPlace place, AbstractTransition transition)
 			throws UnimplementedCaseException {
@@ -76,7 +97,11 @@ public class PetriNetAdapter extends PetriNetInterface {
 		InhibitoryArcAdapter aAdapter = new InhibitoryArcAdapter(arc, tAdapter, pAdapter);
 		return aAdapter;
 	}
-
+	
+	/**
+	 * Permet d'ajouter un arc videur (ou arc réinitialisateur) dans notre réseau de Petri.
+	 * Renvoie son adapteur.
+	 */
 	@Override
 	public AbstractArc addResetArc(AbstractPlace place, AbstractTransition transition)
 			throws UnimplementedCaseException {
@@ -89,42 +114,40 @@ public class PetriNetAdapter extends PetriNetInterface {
 		ResetArcAdapter aAdapter = new ResetArcAdapter(arc, tAdapter, pAdapter);
 		return aAdapter;
 	}
-
+	
+	/**
+	 * Permet de retirer une place de notre réseau de Pétri.
+	 */
 	@Override
 	public void removePlace(AbstractPlace place) {
 		PlaceAdapter pAdapter = (PlaceAdapter) place;
 		Place myPlace = pAdapter.getPlace();
 		petri.removePlace(myPlace);
 	}
-
+	
+	/**
+	 * Permet de retirer une transition de notre réseau de Pétri.
+	 */
 	@Override
 	public void removeTransition(AbstractTransition transition) {
 		TransitionAdapter tAdapter = (TransitionAdapter) transition;
 		Transition myTransition = tAdapter.getTransition();
 		petri.removeTransition(myTransition);
 	}
-
+	
+	/**
+	 * Permet de retirer un arc de notre 
+	 */
 	@Override
 	public void removeArc(AbstractArc arc) {
-		if (arc.isInhibitory()) {
-			InhibitoryArcAdapter aAdapter = (InhibitoryArcAdapter) arc;
-			ZeroArc myArc = aAdapter.getArc();
-			petri.removeArc(myArc);
-		} else if (arc.isReset()) {
-			ResetArcAdapter aAdapter = (ResetArcAdapter) arc;
-			CleanerArc myArc = aAdapter.getArc();
-			petri.removeArc(myArc);
-		} else if (arc.isSourceAPlace()) {
-			ArcPtoTAdapter aAdapter = (ArcPtoTAdapter) arc;
-			RegularArc myArc = aAdapter.getArc();
-			petri.removeArc(myArc);
-		} else {
-			ArcTtoPAdapter aAdapter = (ArcTtoPAdapter) arc;
-			ArcTtoP myArc = aAdapter.getArc();
-			petri.removeArc(myArc);
-		}
+		ArcAdapter aAdapter = (ArcAdapter) arc;
+		Arc myArc = aAdapter.getArc();
+		petri.removeArc(myArc);
 	}
-
+	
+	/**
+	 * 
+	 */
 	@Override
 	public boolean isEnabled(AbstractTransition transition) throws ResetArcMultiplicityException {
 		TransitionAdapter tAdapter = (TransitionAdapter) transition;

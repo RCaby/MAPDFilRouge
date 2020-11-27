@@ -1,6 +1,5 @@
 package org.pneditor.petrinet.adapters.binome03;
 
-import org.pneditor.petrinet.AbstractArc;
 import org.pneditor.petrinet.AbstractNode;
 import org.pneditor.petrinet.ResetArcMultiplicityException;
 import org.pneditor.petrinet.models.binome03.arcs.ZeroArc;
@@ -10,16 +9,10 @@ import org.pneditor.petrinet.models.binome03.arcs.ZeroArc;
  * dans PetriNetAdapter. Elle garde en mémoire l'arc zéro, la place et la
  * transition associés.
  */
-public class InhibitoryArcAdapter extends AbstractArc {
-
-	private ZeroArc arc;
-	private TransitionAdapter transitionAdapter;
-	private PlaceAdapter placeAdapter;
+public class InhibitoryArcAdapter extends ArcAdapter {
 
 	public InhibitoryArcAdapter(ZeroArc a, TransitionAdapter t, PlaceAdapter p) {
-		arc = a;
-		transitionAdapter = t;
-		placeAdapter = p;
+		super(a, t, p);
 	}
 
 	@Override
@@ -48,7 +41,7 @@ public class InhibitoryArcAdapter extends AbstractArc {
 	}
 
 	public ZeroArc getArc() {
-		return arc;
+		return (ZeroArc) arc;
 	}
 
 	@Override

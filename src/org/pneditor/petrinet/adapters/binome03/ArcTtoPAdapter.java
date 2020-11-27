@@ -1,6 +1,5 @@
 package org.pneditor.petrinet.adapters.binome03;
 
-import org.pneditor.petrinet.AbstractArc;
 import org.pneditor.petrinet.AbstractNode;
 import org.pneditor.petrinet.ResetArcMultiplicityException;
 import org.pneditor.petrinet.models.binome03.arcs.ArcTtoP;
@@ -10,16 +9,10 @@ import org.pneditor.petrinet.models.binome03.arcs.ArcTtoP;
  * adapter plutôt qu'un autre se fait dans PNEditorAdapter. Garde en mémoire
  * l'arc, la place et la transition associés.
  */
-public class ArcTtoPAdapter extends AbstractArc {
-
-	private ArcTtoP arc;
-	private TransitionAdapter transitionAdapter;
-	private PlaceAdapter placeAdapter;
+public class ArcTtoPAdapter extends ArcAdapter {
 
 	public ArcTtoPAdapter(ArcTtoP a, TransitionAdapter t, PlaceAdapter p) {
-		arc = a;
-		transitionAdapter = t;
-		placeAdapter = p;
+		super(a, t, p);
 	}
 
 	@Override
@@ -33,7 +26,7 @@ public class ArcTtoPAdapter extends AbstractArc {
 	}
 
 	public ArcTtoP getArc() {
-		return arc;
+		return (ArcTtoP) arc;
 	}
 
 	@Override
@@ -53,12 +46,12 @@ public class ArcTtoPAdapter extends AbstractArc {
 
 	@Override
 	public int getMultiplicity() throws ResetArcMultiplicityException {
-		return arc.getValue();
+		return ((ArcTtoP) arc).getValue();
 	}
 
 	@Override
 	public void setMultiplicity(int multiplicity) throws ResetArcMultiplicityException {
-		arc.setValue(multiplicity);
+		((ArcTtoP) arc).setValue(multiplicity);
 
 	}
 

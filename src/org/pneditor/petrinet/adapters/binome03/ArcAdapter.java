@@ -1,33 +1,39 @@
 package org.pneditor.petrinet.adapters.binome03;
 
+import org.pneditor.petrinet.AbstractArc;
 import org.pneditor.petrinet.AbstractNode;
 import org.pneditor.petrinet.ResetArcMultiplicityException;
-import org.pneditor.petrinet.models.binome03.arcs.CleanerArc;
+import org.pneditor.petrinet.models.binome03.arcs.Arc;
 
-/**
- * Classe adaptant l'arc videur pour l'affichage par le PNEditor. Le choix de
- * l'adaptateur Arc se fait dans PetriNetAdapter. Elle garde en mémoire l'arc
- * videur, la place et la transition associée.
- */
-public class ResetArcAdapter extends ArcAdapter {
-
-	public ResetArcAdapter(CleanerArc a, TransitionAdapter t, PlaceAdapter p) {
-		super(a, t, p);
+public class ArcAdapter extends AbstractArc {
+	
+	protected Arc arc;
+	protected TransitionAdapter transitionAdapter;
+	protected PlaceAdapter placeAdapter;
+	
+	public ArcAdapter(Arc a, TransitionAdapter t, PlaceAdapter p) {
+		arc = a;
+		transitionAdapter = t;
+		placeAdapter = p;
 	}
-
+	
+	public Arc getArc() {
+		return arc;
+	}
+	
 	@Override
 	public AbstractNode getSource() {
-		return placeAdapter;
+		return null;
 	}
 
 	@Override
 	public AbstractNode getDestination() {
-		return transitionAdapter;
+		return null;
 	}
 
 	@Override
 	public boolean isReset() {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -40,10 +46,6 @@ public class ResetArcAdapter extends ArcAdapter {
 		return false;
 	}
 
-	public CleanerArc getArc() {
-		return (CleanerArc) arc;
-	}
-
 	@Override
 	public int getMultiplicity() throws ResetArcMultiplicityException {
 		return 0;
@@ -51,7 +53,7 @@ public class ResetArcAdapter extends ArcAdapter {
 
 	@Override
 	public void setMultiplicity(int multiplicity) throws ResetArcMultiplicityException {
-		// Inutile.
+		
 	}
 
 }
