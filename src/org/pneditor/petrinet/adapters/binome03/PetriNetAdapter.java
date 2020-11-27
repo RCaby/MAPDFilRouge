@@ -26,40 +26,40 @@ public class PetriNetAdapter extends PetriNetInterface {
 	@Override
 	public AbstractPlace addPlace() {
 		petri.addPlace(0);
-		Place p = petri.getPlacesList().get(petri.getPlacesList().size() - 1);
-		PlaceAdapter pa = new PlaceAdapter(" ", p);
-		return pa;
+		Place place = petri.getPlacesList().get(petri.getPlacesList().size() - 1);
+		PlaceAdapter pAdapter = new PlaceAdapter(" ", place);
+		return pAdapter;
 	}
 
 	@Override
 	public AbstractTransition addTransition() {
 		petri.addTransition();
-		Transition t = petri.getTransitionsList().get(petri.getTransitionsList().size() - 1);
-		TransitionAdapter ta = new TransitionAdapter(" ", t);
-		return ta;
+		Transition transition = petri.getTransitionsList().get(petri.getTransitionsList().size() - 1);
+		TransitionAdapter tAdapter = new TransitionAdapter(" ", transition);
+		return tAdapter;
 
 	}
 
 	@Override
 	public AbstractArc addRegularArc(AbstractNode source, AbstractNode destination) throws UnimplementedCaseException {
 		if (source.isPlace()) {
-			PlaceAdapter pa = (PlaceAdapter) source;
-			Place p = pa.getPlace();
-			TransitionAdapter ta = (TransitionAdapter) destination;
-			Transition t = ta.getTransition();
-			petri.addRegularArc(p, t, 1);
-			RegularArc ra = (RegularArc) petri.getArcsList().get(petri.getArcsList().size()-1);
-			ArcPtoTAdapter apta = new ArcPtoTAdapter(ra, ta, pa);
-			return apta;
+			PlaceAdapter pAdapter = (PlaceAdapter) source;
+			Place place = pAdapter.getPlace();
+			TransitionAdapter tAdapter = (TransitionAdapter) destination;
+			Transition transition = tAdapter.getTransition();
+			petri.addRegularArc(place, transition, 1);
+			RegularArc arc = (RegularArc) petri.getArcsList().get(petri.getArcsList().size()-1);
+			ArcPtoTAdapter aAdapter = new ArcPtoTAdapter(arc, tAdapter, pAdapter);
+			return aAdapter;
 		} else {
-			TransitionAdapter ta = (TransitionAdapter) source;
-			Transition t = ta.getTransition();
-			PlaceAdapter pa = (PlaceAdapter) destination;
-			Place p = pa.getPlace();
-			petri.addArcTtoP(p, t, 1);
-			ArcTtoP ra = (ArcTtoP) petri.getArcsList().get(petri.getArcsList().size()-1);
-			ArcTtoPAdapter atpa = new ArcTtoPAdapter(ra, ta, pa);
-			return atpa;
+			TransitionAdapter tAdapter = (TransitionAdapter) source;
+			Transition transition = tAdapter.getTransition();
+			PlaceAdapter pAdapter = (PlaceAdapter) destination;
+			Place place = pAdapter.getPlace();
+			petri.addArcTtoP(place, transition, 1);
+			ArcTtoP arc = (ArcTtoP) petri.getArcsList().get(petri.getArcsList().size()-1);
+			ArcTtoPAdapter aAdapter = new ArcTtoPAdapter(arc, tAdapter, pAdapter);
+			return aAdapter;
 		}
 		
 	}
@@ -67,76 +67,76 @@ public class PetriNetAdapter extends PetriNetInterface {
 	@Override
 	public AbstractArc addInhibitoryArc(AbstractPlace place, AbstractTransition transition)
 			throws UnimplementedCaseException {
-		PlaceAdapter pa = (PlaceAdapter) place;
-		Place p = pa.getPlace();
-		TransitionAdapter ta = (TransitionAdapter) transition;
-		Transition t = ta.getTransition();
-		petri.addZeroArc(p, t);
-		ZeroArc a = (ZeroArc) petri.getArcsList().get(petri.getArcsList().size()-1);
-		InhibitoryArcAdapter iaa = new InhibitoryArcAdapter(a, ta, pa);
-		return iaa;
+		PlaceAdapter pAdapter = (PlaceAdapter) place;
+		Place myPlace = pAdapter.getPlace();
+		TransitionAdapter tAdapter = (TransitionAdapter) transition;
+		Transition myTransition = tAdapter.getTransition();
+		petri.addZeroArc(myPlace, myTransition);
+		ZeroArc arc = (ZeroArc) petri.getArcsList().get(petri.getArcsList().size()-1);
+		InhibitoryArcAdapter aAdapter = new InhibitoryArcAdapter(arc, tAdapter, pAdapter);
+		return aAdapter;
 	}
 
 	@Override
 	public AbstractArc addResetArc(AbstractPlace place, AbstractTransition transition)
 			throws UnimplementedCaseException {
-		PlaceAdapter pa = (PlaceAdapter) place;
-		Place p = pa.getPlace();
-		TransitionAdapter ta = (TransitionAdapter) transition;
-		Transition t = ta.getTransition();
-		petri.addCleanerArc(p, t);
-		CleanerArc a = (CleanerArc) petri.getArcsList().get(petri.getArcsList().size()-1);
-		ResetArcAdapter raa = new ResetArcAdapter(a, ta, pa);
-		return raa;
+		PlaceAdapter pAdapter = (PlaceAdapter) place;
+		Place myPlace = pAdapter.getPlace();
+		TransitionAdapter tAdapter = (TransitionAdapter) transition;
+		Transition myTransition = tAdapter.getTransition();
+		petri.addCleanerArc(myPlace, myTransition);
+		CleanerArc arc = (CleanerArc) petri.getArcsList().get(petri.getArcsList().size()-1);
+		ResetArcAdapter aAdapter = new ResetArcAdapter(arc, tAdapter, pAdapter);
+		return aAdapter;
 	}
 
 	@Override
 	public void removePlace(AbstractPlace place) {
-		PlaceAdapter pa = (PlaceAdapter) place;
-		Place p = pa.getPlace();
-		petri.removePlace(p);
+		PlaceAdapter pAdapter = (PlaceAdapter) place;
+		Place myPlace = pAdapter.getPlace();
+		petri.removePlace(myPlace);
 	}
 
 	@Override
 	public void removeTransition(AbstractTransition transition) {
-		TransitionAdapter ta = (TransitionAdapter) transition;
-		Transition t = ta.getTransition();
-		petri.removeTransition(t);
+		TransitionAdapter tAdapter = (TransitionAdapter) transition;
+		Transition myTransition = tAdapter.getTransition();
+		petri.removeTransition(myTransition);
 	}
 
 	@Override
 	public void removeArc(AbstractArc arc) {
 		if (arc.isInhibitory()) {
-			InhibitoryArcAdapter iaa = (InhibitoryArcAdapter) arc;
-			ZeroArc za = iaa.getArc();
-			petri.removeArc(za);
+			InhibitoryArcAdapter aAdapter = (InhibitoryArcAdapter) arc;
+			ZeroArc myArc = aAdapter.getArc();
+			petri.removeArc(myArc);
 		} else if (arc.isReset()) {
-			ResetArcAdapter raa = (ResetArcAdapter) arc;
-			CleanerArc ca = raa.getArc();
-			petri.removeArc(ca);
+			ResetArcAdapter aAdapter = (ResetArcAdapter) arc;
+			CleanerArc myArc = aAdapter.getArc();
+			petri.removeArc(myArc);
 		} else if (arc.isSourceAPlace()) {
-			ArcPtoTAdapter apta = (ArcPtoTAdapter) arc;
-			RegularArc ra = apta.getArc();
-			petri.removeArc(ra);
+			ArcPtoTAdapter aAdapter = (ArcPtoTAdapter) arc;
+			RegularArc myArc = aAdapter.getArc();
+			petri.removeArc(myArc);
 		} else {
-			ArcTtoPAdapter atpa = (ArcTtoPAdapter) arc;
-			ArcTtoP atp = atpa.getArc();
-			petri.removeArc(atp);
+			ArcTtoPAdapter aAdapter = (ArcTtoPAdapter) arc;
+			ArcTtoP myArc = aAdapter.getArc();
+			petri.removeArc(myArc);
 		}
 	}
 
 	@Override
 	public boolean isEnabled(AbstractTransition transition) throws ResetArcMultiplicityException {
-		TransitionAdapter ta = (TransitionAdapter) transition;
-		Transition t = ta.getTransition();
-		return t.isPickable();
+		TransitionAdapter tAdapter = (TransitionAdapter) transition;
+		Transition myTransition = tAdapter.getTransition();
+		return myTransition.isPickable();
 	}
 
 	@Override
 	public void fire(AbstractTransition transition) throws ResetArcMultiplicityException {
-		TransitionAdapter ta = (TransitionAdapter) transition;
-		Transition t = ta.getTransition();
-		t.step();
+		TransitionAdapter tAdapter = (TransitionAdapter) transition;
+		Transition myTransition = tAdapter.getTransition();
+		myTransition.step();
 	}
 
 }

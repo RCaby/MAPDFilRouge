@@ -49,7 +49,7 @@ public class GraphicPetriNet {
 	private Point viewTranslation = new Point(0, 0);
 	private PetriNetInterface petriNet;
 	private final String modelPath = "org.pneditor.petrinet.adapters.";
-	private String model = "initial";
+	private String model = "binome03";
 	private final String modelAdapterPath = ".PetriNetAdapter";
 
 	/**

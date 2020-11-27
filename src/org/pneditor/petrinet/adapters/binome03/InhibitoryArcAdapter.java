@@ -8,23 +8,23 @@ import org.pneditor.petrinet.models.binome03.arcs.ZeroArc;
 public class InhibitoryArcAdapter extends AbstractArc {
 	
 	private ZeroArc arc;
-	private TransitionAdapter ta;
-	private PlaceAdapter pa;
+	private TransitionAdapter transitionAdapter;
+	private PlaceAdapter placeAdapter;
 	
 	public InhibitoryArcAdapter(ZeroArc a, TransitionAdapter t, PlaceAdapter p) {
 		arc = a;
-		ta = t;
-		pa = p;
+		transitionAdapter = t;
+		placeAdapter = p;
 	}
 	
 	@Override
 	public AbstractNode getSource() {
-		return pa;
+		return placeAdapter;
 	}
 
 	@Override
 	public AbstractNode getDestination() {
-		return ta;
+		return transitionAdapter;
 	}
 
 	@Override
@@ -48,14 +48,11 @@ public class InhibitoryArcAdapter extends AbstractArc {
 
 	@Override
 	public int getMultiplicity() throws ResetArcMultiplicityException {
-		// FIXME
 		return 0;
 	}
 
 	@Override
 	public void setMultiplicity(int multiplicity) throws ResetArcMultiplicityException {
-		// FIXME
-		
 	}
 
 }

@@ -8,23 +8,23 @@ import org.pneditor.petrinet.models.binome03.arcs.RegularArc;
 public class ArcPtoTAdapter extends AbstractArc {
 	
 	private RegularArc arc;
-	private TransitionAdapter ta;
-	private PlaceAdapter pa;
+	private TransitionAdapter transitionAdapter;
+	private PlaceAdapter placeAdapter;
 	
 	public ArcPtoTAdapter(RegularArc a, TransitionAdapter t, PlaceAdapter p) {
 		arc = a;
-		ta = t;
-		pa = p;
+		transitionAdapter = t;
+		placeAdapter = p;
 	}
 
 	@Override
 	public AbstractNode getSource() {
-		return pa;
+		return placeAdapter;
 	}
 
 	@Override
 	public AbstractNode getDestination() {
-		return ta;
+		return transitionAdapter;
 	}
 	
 	public RegularArc getArc() {

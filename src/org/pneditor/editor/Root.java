@@ -171,7 +171,7 @@ public final class Root implements WindowListener, ListSelectionListener, Select
 		return this.graphicPetriNet.getPetriNet();
 	}
 
-	private String model = "initial";
+	private String model = "binome03";
 
 	public String getCurrentModel() {
 		return this.model;
@@ -712,7 +712,7 @@ public final class Root implements WindowListener, ListSelectionListener, Select
 		if (isModified()) {
 			windowTitle += " [modified]";
 		}
-		windowTitle += " - " + getAppShortName() + " - " + (this.model != null ? this.model : "initial"); // FIXME: why null at
+		windowTitle += " - " + getAppShortName() + " - " + (this.model != null ? this.model : "binome03"); // FIXME: why null at
 																								// the start?
 		return windowTitle;
 	}

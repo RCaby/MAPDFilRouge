@@ -25,8 +25,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Date;
 
-import org.pneditor.petrinet.models.initial.Transition;
-//import org.pneditor.petrinet.models.binome03.nodes.Transition;
+//import org.pneditor.petrinet.models.initial.Transition;
+import org.pneditor.petrinet.models.binome03.nodes.Transition;
 
 /**
  *
@@ -45,7 +45,7 @@ public class WorkflowLogger {
         final OutputStream fileOutputStream = Files.newOutputStream(Paths.get(file.toURI()));
         final BufferedOutputStream bufferedOutputStream = new BufferedOutputStream(fileOutputStream);
         final PrintStream out = new PrintStream(bufferedOutputStream); 
-        out.println(caseId + "  " + new Date().getTime() + "    " + userId + "  " + transition.getLabel());
+        out.println(caseId + "  " + new Date().getTime() + "    " + userId + "  " /*+ transition.getLabel()*/);
         bufferedOutputStream.close();
         fileOutputStream.close();
     }
