@@ -5,22 +5,27 @@ import org.pneditor.petrinet.AbstractNode;
 import org.pneditor.petrinet.ResetArcMultiplicityException;
 import org.pneditor.petrinet.models.binome03.arcs.Arc;
 
+/**
+ * L'intermédiaire entre les AbstractArc et nos différents types d'arcs. La
+ * plupart des méthodes sont réécrites mais sont appelées par le PetriNetAdapter
+ * sur un ArcAdapter, d'où leur présence ici.
+ */
 public class ArcAdapter extends AbstractArc {
-	
+
 	protected Arc arc;
 	protected TransitionAdapter transitionAdapter;
 	protected PlaceAdapter placeAdapter;
-	
+
 	public ArcAdapter(Arc a, TransitionAdapter t, PlaceAdapter p) {
 		arc = a;
 		transitionAdapter = t;
 		placeAdapter = p;
 	}
-	
+
 	public Arc getArc() {
 		return arc;
 	}
-	
+
 	@Override
 	public AbstractNode getSource() {
 		return null;
@@ -53,7 +58,7 @@ public class ArcAdapter extends AbstractArc {
 
 	@Override
 	public void setMultiplicity(int multiplicity) throws ResetArcMultiplicityException {
-		
+
 	}
 
 }

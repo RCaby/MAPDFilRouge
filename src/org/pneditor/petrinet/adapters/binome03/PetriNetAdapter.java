@@ -17,7 +17,8 @@ import org.pneditor.petrinet.models.binome03.nodes.Transition;
 import org.pneditor.petrinet.models.binome03.petriNet.PetriNet;
 
 /**
- * Classe qui sert à adapter notre programmation du réseau de réseau au PNE Editor
+ * Classe qui sert à adapter notre programmation du réseau de réseau au PNE
+ * Editor
  */
 public class PetriNetAdapter extends PetriNetInterface {
 
@@ -26,10 +27,9 @@ public class PetriNetAdapter extends PetriNetInterface {
 	public PetriNetAdapter() {
 		petri = new PetriNet();
 	}
-	
+
 	/**
-	 * Permet d'ajouter une place dans notre réseau de Pétri.
-	 * Renvoie son adapteur.
+	 * Permet d'ajouter une place dans notre réseau de Pétri. Renvoie son adapteur.
 	 */
 	@Override
 	public AbstractPlace addPlace() {
@@ -38,10 +38,10 @@ public class PetriNetAdapter extends PetriNetInterface {
 		PlaceAdapter pAdapter = new PlaceAdapter(" ", place);
 		return pAdapter;
 	}
-	
+
 	/**
-	 * Permet d'ajouter une transition dans notre réseau de Pétri.
-	 * Renvoie son adapteur.
+	 * Permet d'ajouter une transition dans notre réseau de Pétri. Renvoie son
+	 * adapteur.
 	 */
 	@Override
 	public AbstractTransition addTransition() {
@@ -51,11 +51,12 @@ public class PetriNetAdapter extends PetriNetInterface {
 		return tAdapter;
 
 	}
-	
+
 	/**
-	 * Permet d'ajouter un arc normal (dont on peut changer la multiplicité) dans notre réseau de Pétri.
-	 * Renvoie son adapteur.
-	 * Ici, il est nécessaire pour nous de déterminer si la source est la place ou la transition, car cela change la classe d'arc utilisée.
+	 * Permet d'ajouter un arc normal (dont on peut changer la multiplicité) dans
+	 * notre réseau de Pétri. Renvoie son adapteur. Ici, il est nécessaire pour nous
+	 * de déterminer si la source est la place ou la transition, car cela change la
+	 * classe d'arc utilisée.
 	 */
 	@Override
 	public AbstractArc addRegularArc(AbstractNode source, AbstractNode destination) throws UnimplementedCaseException {
@@ -65,7 +66,7 @@ public class PetriNetAdapter extends PetriNetInterface {
 			TransitionAdapter tAdapter = (TransitionAdapter) destination;
 			Transition transition = tAdapter.getTransition();
 			petri.addRegularArc(place, transition, 1);
-			RegularArc arc = (RegularArc) petri.getArcsList().get(petri.getArcsList().size()-1);
+			RegularArc arc = (RegularArc) petri.getArcsList().get(petri.getArcsList().size() - 1);
 			ArcPtoTAdapter aAdapter = new ArcPtoTAdapter(arc, tAdapter, pAdapter);
 			return aAdapter;
 		} else {
@@ -74,13 +75,13 @@ public class PetriNetAdapter extends PetriNetInterface {
 			PlaceAdapter pAdapter = (PlaceAdapter) destination;
 			Place place = pAdapter.getPlace();
 			petri.addArcTtoP(place, transition, 1);
-			ArcTtoP arc = (ArcTtoP) petri.getArcsList().get(petri.getArcsList().size()-1);
+			ArcTtoP arc = (ArcTtoP) petri.getArcsList().get(petri.getArcsList().size() - 1);
 			ArcTtoPAdapter aAdapter = new ArcTtoPAdapter(arc, tAdapter, pAdapter);
 			return aAdapter;
 		}
-		
+
 	}
-	
+
 	/**
 	 * Permet d'ajouter un arc zéro (ou arc inhibiteur) dans notre réseau de Pétri.
 	 * Renvoie son adapteur.
@@ -93,14 +94,14 @@ public class PetriNetAdapter extends PetriNetInterface {
 		TransitionAdapter tAdapter = (TransitionAdapter) transition;
 		Transition myTransition = tAdapter.getTransition();
 		petri.addZeroArc(myPlace, myTransition);
-		ZeroArc arc = (ZeroArc) petri.getArcsList().get(petri.getArcsList().size()-1);
+		ZeroArc arc = (ZeroArc) petri.getArcsList().get(petri.getArcsList().size() - 1);
 		InhibitoryArcAdapter aAdapter = new InhibitoryArcAdapter(arc, tAdapter, pAdapter);
 		return aAdapter;
 	}
-	
+
 	/**
-	 * Permet d'ajouter un arc videur (ou arc réinitialisateur) dans notre réseau de Petri.
-	 * Renvoie son adapteur.
+	 * Permet d'ajouter un arc videur (ou arc réinitialisateur) dans notre réseau de
+	 * Petri. Renvoie son adapteur.
 	 */
 	@Override
 	public AbstractArc addResetArc(AbstractPlace place, AbstractTransition transition)
@@ -110,13 +111,13 @@ public class PetriNetAdapter extends PetriNetInterface {
 		TransitionAdapter tAdapter = (TransitionAdapter) transition;
 		Transition myTransition = tAdapter.getTransition();
 		petri.addCleanerArc(myPlace, myTransition);
-		CleanerArc arc = (CleanerArc) petri.getArcsList().get(petri.getArcsList().size()-1);
+		CleanerArc arc = (CleanerArc) petri.getArcsList().get(petri.getArcsList().size() - 1);
 		ResetArcAdapter aAdapter = new ResetArcAdapter(arc, tAdapter, pAdapter);
 		return aAdapter;
 	}
-	
+
 	/**
-	 * Permet de retirer une place de notre réseau de Pétri.
+	 * Permet de retirer une place de notre réseau de Pétri, via son adaptateur.
 	 */
 	@Override
 	public void removePlace(AbstractPlace place) {
@@ -124,9 +125,10 @@ public class PetriNetAdapter extends PetriNetInterface {
 		Place myPlace = pAdapter.getPlace();
 		petri.removePlace(myPlace);
 	}
-	
+
 	/**
-	 * Permet de retirer une transition de notre réseau de Pétri.
+	 * Permet de retirer une transition de notre réseau de Pétri, via son
+	 * adaptateur.
 	 */
 	@Override
 	public void removeTransition(AbstractTransition transition) {
@@ -134,9 +136,9 @@ public class PetriNetAdapter extends PetriNetInterface {
 		Transition myTransition = tAdapter.getTransition();
 		petri.removeTransition(myTransition);
 	}
-	
+
 	/**
-	 * Permet de retirer un arc de notre 
+	 * Permet de retirer un arc de notre réseau de Petri, via son adaptateur.
 	 */
 	@Override
 	public void removeArc(AbstractArc arc) {
@@ -144,9 +146,10 @@ public class PetriNetAdapter extends PetriNetInterface {
 		Arc myArc = aAdapter.getArc();
 		petri.removeArc(myArc);
 	}
-	
+
 	/**
-	 * 
+	 * Vérifie que la transition passée en paramètre est tirable, via son
+	 * adaptateur.
 	 */
 	@Override
 	public boolean isEnabled(AbstractTransition transition) throws ResetArcMultiplicityException {
@@ -155,6 +158,9 @@ public class PetriNetAdapter extends PetriNetInterface {
 		return myTransition.isPickable();
 	}
 
+	/**
+	 * Tire la transition passée en paramètre si c'est possible.
+	 */
 	@Override
 	public void fire(AbstractTransition transition) throws ResetArcMultiplicityException {
 		TransitionAdapter tAdapter = (TransitionAdapter) transition;
