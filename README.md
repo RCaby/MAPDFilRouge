@@ -1,4 +1,10 @@
 # MAPDFilRouge
+
+Réalisation d'un éditeur de réseau de Petri à l'aide d'une IHM déjà conçue.
+Projet réalisé dans le cadre d'un cours à IMT Atlantique, en 2021.
+
+
+## Commentaires 
 Notre code a été intégré dans le package : org.pneditor.petrinet.models.binome03.
 Des adapteurs ont été rédigés dans : org.pneditor.petrinet.adapters.binome03.
 
